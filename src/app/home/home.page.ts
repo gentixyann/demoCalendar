@@ -15,7 +15,7 @@ export class HomePage implements OnInit {
     desc: '',
     startTime: '',
     endTime: '',
-    allDay: false
+    allDay: true
   };
  
   minDate = new Date().toISOString();
@@ -96,7 +96,8 @@ onViewTitleChanged(title) {
 }
  
 // Calendar event was clicked
-async onEventSelected(event) {
+  async onEventSelected(event) {
+  console.log('イベント選ばれたぜ')
   // Use Angular date pipe for conversion
   let start = formatDate(event.startTime, 'medium', this.locale);
   let end = formatDate(event.endTime, 'medium', this.locale);
@@ -113,6 +114,7 @@ async onEventSelected(event) {
 // Time slot was clicked
 onTimeSelected(ev) {
   let selected = new Date(ev.selectedTime);
+  console.log('今の日付は　' + selected);
   this.event.startTime = selected.toISOString();
   selected.setHours(selected.getHours() + 1);
   this.event.endTime = (selected.toISOString());
