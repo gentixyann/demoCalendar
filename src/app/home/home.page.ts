@@ -97,27 +97,28 @@ onViewTitleChanged(title) {
  
 // Calendar event was clicked
   async onEventSelected(event) {
-  console.log('イベント選ばれたぜ')
+    console.log('イベント選ばれたぜ');
   // Use Angular date pipe for conversion
-  let start = formatDate(event.startTime, 'medium', this.locale);
-  let end = formatDate(event.endTime, 'medium', this.locale);
+    const start = formatDate(event.startTime, 'medium', this.locale);
+    const end = formatDate(event.endTime, 'medium', this.locale);
  
-  const alert = await this.alertCtrl.create({
+    const alert = await this.alertCtrl.create({
     header: event.title,
     subHeader: event.desc,
     message: 'From: ' + start + '<br><br>To: ' + end,
     buttons: ['OK']
   });
-  alert.present();
+    alert.present();
 }
- 
+
 // Time slot was clicked
 onTimeSelected(ev) {
   let selected = new Date(ev.selectedTime);
-  console.log('今の日付は　' + selected);
+  // console.log('今の日付は　' + selected);
   this.event.startTime = selected.toISOString();
   selected.setHours(selected.getHours() + 1);
   this.event.endTime = (selected.toISOString());
+
 }
 
 }
