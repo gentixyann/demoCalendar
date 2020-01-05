@@ -35,6 +35,10 @@ export class HomePage implements OnInit {
   ngOnInit() {
     this.resetEvent();
   }
+
+  onCahngeDate() {
+    console.log('onCahngeDate発動');
+  }
  
   resetEvent() {
     this.event = {
